@@ -8,11 +8,11 @@ Many people likes to make neovim looks like graphical IDE, with icons, statuslin
 
 Some other intentional decisions I made due to practicality:
 
-## init.vim instead of init.lua
+### init.vim instead of init.lua
 
 Most article on the internet promotes using `init.lua`, but I found it is not practical for me because it still needs to call vim script to make mapping and other things, and I cannot reload it with `source %`. Besides most plugins can still be loaded from `init.vim`, also I can still modularized my plugin by calling `lua require('<lua_init_file>')`.
 
-## fzf.vim instead of telescope
+### fzf.vim instead of telescope
 
 I admit telescope is really great, it has a lot of features that can replace both `fzf.vim` and `nerdtree`. However, I can't use telescope due to:
 
@@ -22,6 +22,27 @@ I admit telescope is really great, it has a lot of features that can replace bot
 
 Until these minor issues fixed, I will still use `fzf` and `nerdtree` combo.
 
-## Fugitive instead of telescope
+### Fugitive instead of telescope
 
 I am comfortable using fugitive and most of my use case is already covered. Telescope might be better, but I like fugitive. :D
+
+## Some Adjustment
+
+### PHP indenting not working
+
+When using `Treesitter` editing php file will be painful because the indentation doesn't work. To remedy that, create `~/.config/nvim/after/indent/php.vim`
+
+```
+setlocal indentexpr =
+setlocal autoindent
+setlocal smartindent
+```
+
+### Tokyonight Colorscheme line number is unreadable
+
+Tokyonight is a great colorscheme that support lsp and other goodies. However the line number is unreadable due to very low contrast. To fix that edit `~/.config/nvim/plugged/tokyonight.nvim/lua/tokyonight/theme.lua` and change the following lines:
+
+```
+    LineNr = { fg = c.dark5 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr = { fg = c.fg_dark }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+```
