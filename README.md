@@ -1,7 +1,5 @@
 # Neovim Config with LSP and Treesitter
 
-My previous Neovim setup used coc and it worked really well. Most of the things worked great, such as autocompletion, language server, snippets, prettier and other IDE-like experience on top of Neovim. I was happy until I found that one vim window with coc would start a `node` process that ate at least 400mb of RAM, and one time I saw it ate almost 1Gb RAM. To make it worst, I have the habbit to keep a few vim window open accross tmux panes. Thus I knew why my laptop froze often and I needed to find an alternative for coc.
-
 ## Plugin Choice
 
 Many people likes to make neovim looks like graphical IDE, with icons, statusline and powerlines symbol. It sure looks great, but my favourite fonts (terminus (bitmap) and code new roman), doesn't have a very good support for powerline symbols. Also, I feel that these cosmetics doesn't really add much to my productivity. Therefore I decided not to install any cosmetics plugins such as `webdevicons` or other fancy statusline.
