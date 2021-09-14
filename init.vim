@@ -9,7 +9,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 
 " language servers and formatting
@@ -29,6 +28,11 @@ Plug 'ray-x/go.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'glepnir/lspsaga.nvim'
 
+" Telescope
+Plug 'nvim-lua/plenary.nvim',
+Plug 'nvim-lua/popup.nvim',
+Plug 'nvim-telescope/telescope.nvim',
+ 
 " writing tools
 Plug 'dpelle/vim-LanguageTool'
 
@@ -41,8 +45,6 @@ call plug#end()
 " ==================== SETUP GLOBAL VARIABLES ====================
 
 let g:languagetool_jar='/opt/Transient/bin/LanguageTool-5.4/languagetool-commandline.jar'
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
 let g:user_emmet_install_global = 0
 set conceallevel=0 "don't hide markdown tags
 
@@ -135,20 +137,13 @@ nnoremap <leader>ww :noa w<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" ---- NerdTree ---
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle <CR> 
-map <C-g> :Tags<CR>
-map <C-p> :GFiles<CR>
-map <C-o> :Files<CR>
-map <C-a> :Buffers<CR>
-
 " ==================== LUA INIT ====================
 lua require('init_syntax')
 lua require('init_completion')
 lua require('init_lsp')
 lua require('init_statusline')
 lua require('init_prettier')
+lua require('init_telescope')
 
 " ==================== CUSTOM FUNCTIONS ====================
 function! VueTransTempl()
