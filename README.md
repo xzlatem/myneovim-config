@@ -10,15 +10,17 @@ Some other intentional decisions I made due to practicality:
 
 Most article on the internet promotes using `init.lua`, but I found it is not practical for me because it still needs to call vim script to make mapping and other things, and I cannot reload it with `source %`. Besides most plugins can still be loaded from `init.vim`, also I can still modularized my plugin by calling `lua require('<lua_init_file>')`.
 
-### fzf.vim instead of telescope
+### ~~fzf.vim instead of telescope~~
 
-I admit telescope is really great, it has a lot of features that can replace both `fzf.vim` and `nerdtree`. However, I can't use telescope due to:
+~~I admit telescope is really great, it has a lot of features that can replace both `fzf.vim` and `nerdtree`. However, I can't use telescope due to:
 
 - Opening file browser don't give me a clue about the folder structure
 - When working with deeply nested folder structure, it either show filename or foldername. Using `hidden` will not show file name, `tail` will not show folder name, `absolute` will only show truncated path that effectively don't show file name, `shorten` and `absolute` combo show file name but the path is only the first character, that makes it hard to grasp what folder this file is in.
 - Typing full file name doesn't necessarily put the cursor on the file I want to open.
 
-Until these minor issues fixed, I will still use `fzf` and `nerdtree` combo.
+Until these minor issues fixed, I will still use `fzf` and `nerdtree` combo.~~
+
+Telescope is really great.
 
 ### Fugitive instead of telescope
 

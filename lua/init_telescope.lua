@@ -69,14 +69,23 @@ require("telescope").setup({
 
 vim.api.nvim_exec(
   [[
-nmap <leader>tp :lua require("telescope.builtin").find_files(require("telescope.themes").get_ivy({}))<cr>
+nmap <C-p> :lua require("telescope.builtin").find_files(require("telescope.themes").get_ivy({}))<cr>
+nmap <C-o> :lua require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({}))<cr>
+nmap <C-a> :lua require("telescope.builtin").buffers(require("telescope.themes").get_ivy({}))<cr>
+
+nmap <leader>tc :lua require("telescope.builtin").colorscheme(require("telescope.themes").get_ivy({}))<cr>
+nmap <leader>tt :lua require("telescope.builtin").tags(require("telescope.themes").get_ivy({}))<cr>
+
+nmap <leader>rg :lua require("telescope.builtin").live_grep(require("telescope.themes").get_ivy({}))<cr>
 nmap <leader>tr :lua require("telescope.builtin").registers()<cr> 
-nmap <leader>tg :lua require("telescope.builtin").live_grep(require("telescope.themes").get_ivy({}))<cr>
-nmap <leader>ta :lua require("telescope.builtin").buffers(require("telescope.themes").get_ivy({}))<cr>
 nmap <leader>tj :lua require("telescope.builtin").help_tags()<cr>
-nmap <leader>to :lua require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({}))<cr>
 nmap <leader>ts :lua require("telescope.builtin").spell_suggest()<cr>
-nmap <leader>ti :lua require("telescope.builtin").git_status(require("telescope.themes").get_ivy({}))<cr>
+
+nmap <leader>git :lua require("telescope.builtin").git_status(require("telescope.themes").get_ivy({}))<cr>
+
+nmap <leader>lr :lua require("telescope.builtin").lsp_references(require("telescope.themes").get_ivy({}))<cr>
+nmap <leader>ls :lua require("telescope.builtin").lsp_document_symbols(require("telescope.themes").get_ivy({}))<cr>
+nmap <leader>la :lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_ivy({}))<cr>
 ]],
   true
 )
