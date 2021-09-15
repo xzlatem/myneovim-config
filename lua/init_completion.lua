@@ -115,10 +115,10 @@ _G.s_tab_complete = function()
 end
 
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<C-k>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<C-k>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<C-l>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<C-l>", "v:lua.s_tab_complete()", { expr = true })
 
 require("luasnip/loaders/from_vscode").load({ paths = { "./plugged/friendly-snippets" } })
 
