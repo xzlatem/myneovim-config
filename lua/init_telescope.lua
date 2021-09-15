@@ -73,7 +73,7 @@ nmap <C-p> :lua require("telescope.builtin").find_files(require("telescope.theme
 nmap <C-o> :lua require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({}))<cr>
 nmap <C-a> :lua require("telescope.builtin").buffers(require("telescope.themes").get_ivy({}))<cr>
 
-nmap <leader>tc :lua require("telescope.builtin").colorscheme(require("telescope.themes").get_ivy({}))<cr>
+nmap <leader>tk :lua require("telescope.builtin").colorscheme(require("telescope.themes").get_ivy({}))<cr>
 nmap <leader>tt :lua require("telescope.builtin").tags(require("telescope.themes").get_ivy({}))<cr>
 
 nmap <leader>rg :lua require("telescope.builtin").live_grep(require("telescope.themes").get_ivy({}))<cr>
