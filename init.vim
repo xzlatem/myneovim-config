@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'jiangmiao/auto-pairs'
 
 " language servers and formatting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

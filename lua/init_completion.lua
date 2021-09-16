@@ -114,7 +114,7 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
+vim.api.nvim_set_keymap("i", "<C-x>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 vim.api.nvim_set_keymap("i", "<C-k>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<C-k>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("i", "<C-l>", "v:lua.s_tab_complete()", { expr = true })
