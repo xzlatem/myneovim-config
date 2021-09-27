@@ -25,6 +25,14 @@ require("formatter").setup({
         }
       end,
     },
+    python = {
+      function()
+        return {
+          exe = "black",
+          stdin = false,
+        }
+      end,
+    },
   },
 })
 
@@ -32,7 +40,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.ts,*.css,*.scss,*.md,*.html,*.lua : FormatWrite
+  autocmd BufWritePost *.js,*.ts,*.css,*.scss,*.md,*.html,*.lua,*.py : FormatWrite
 augroup END
 
 autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()

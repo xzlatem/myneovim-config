@@ -6,8 +6,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
 
 " language servers and formatting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -44,6 +46,8 @@ call plug#end()
 " ==================== SETUP GLOBAL VARIABLES ====================
 
 let g:languagetool_jar='/opt/Transient/bin/LanguageTool-5.4/languagetool-commandline.jar'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 let g:user_emmet_install_global = 0
 set conceallevel=0 "don't hide markdown tags
 
@@ -136,6 +140,12 @@ nnoremap <leader>ww :noa w<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
+" ---- NerdTree 
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+
 " ==================== LUA INIT ====================
 lua require('init_syntax')
 lua require('init_completion')
@@ -171,12 +181,18 @@ function! InsertDate()
     exe "normal! i " . curdate
 endfunction
 
+function! InsertTomorrowDate()
+    let curdate = strftime('%a %d %b %Y', localtime() + (24 * 3600))
+    exe "normal! i " . curdate
+endfunction
+
 function! InsertTime()
     let curdate = strftime('%H:%M:%S')
     exe "normal! a[ " . curdate ." ]"
 endfunction
 
 nnoremap <leader>id :call InsertDate()<CR>
+nnoremap <leader>in :call InsertTomorrowDate()<CR>
 nnoremap <leader>it :call InsertTime()<CR>
 vnoremap <leader>vi :call VueTransTempl()<CR>
 vnoremap <leader>vk :call VueTransText()<CR>
