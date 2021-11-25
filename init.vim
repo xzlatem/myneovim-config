@@ -25,7 +25,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'mhartington/formatter.nvim'
-Plug 'ray-x/go.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'glepnir/lspsaga.nvim'
 
@@ -41,6 +41,11 @@ Plug 'dpelle/vim-LanguageTool'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'hoob3rt/lualine.nvim'
 
+" jupyter notebook
+Plug 'szymonmaszke/vimpyter'
+
+" narrow region
+Plug 'chrisbra/NrrwRgn'
 call plug#end()
 
 " ==================== SETUP GLOBAL VARIABLES ====================
@@ -93,7 +98,7 @@ set signcolumn=yes
 
 au FileType wiki setl sw=2
 au FileType html,css,php,blade,vue,jsx,svelte,gohtmltmpl EmmetInstall
-au FileType html,css,js,ts,vue,jsx,tmpl,javascript setl sw=2
+au FileType html,css,ts,vue,jsx,tmpl setl sw=2
 au CompleteDone * pclose
 au TermOpen * setlocal nonumber norelativenumber
 au Filetype txt,md,markdown let b:AutoPairs = {'(':')','{':'}',"'":"'",'"':'"', '```':'```', '`':'`'}
@@ -144,7 +149,7 @@ xmap ga <Plug>(EasyAlign)
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ==================== LUA INIT ====================
 lua require('init_syntax')
@@ -197,3 +202,10 @@ nnoremap <leader>it :call InsertTime()<CR>
 vnoremap <leader>vi :call VueTransTempl()<CR>
 vnoremap <leader>vk :call VueTransText()<CR>
 vnoremap <leader>vl :call VueTransUnquote()<CR>
+
+nnoremap <leader>fp :!prettier % --print-width=100 --tab-width=4 --write<CR>
+
+" ======================= Jupyter Notebook ============================
+autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>

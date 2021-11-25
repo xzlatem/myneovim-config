@@ -1,7 +1,7 @@
 local prettier = function()
   return {
     exe = "prettier",
-    args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--double-quote" },
+    args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--double-quote", "--tab-width", "4", "--print-width", "120" },
     stdin = true,
   }
 end
@@ -15,6 +15,7 @@ require("formatter").setup({
     css = { prettier },
     scss = { prettier },
     markdown = { prettier },
+    svelte = { prettier },
     lua = {
       -- Stylua
       function()
