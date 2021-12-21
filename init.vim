@@ -26,7 +26,8 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'mhartington/formatter.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'kabouzeid/nvim-lspinstall'
+"Plug 'kabouzeid/nvim-lspinstall'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'glepnir/lspsaga.nvim'
 
 " Telescope
