@@ -17,7 +17,7 @@ require("lualine").setup({
       { "diff", color_added = "#a7c080", color_modified = "#ffdf1b", color_removed = "#ff6666" },
     },
     lualine_c = {
-      { "diagnostics", sources = { "nvim_lsp" } },
+      { "diagnostics", sources = { "nvim_diagnostic" } },
       function()
         return "%="
       end,
@@ -48,4 +48,3 @@ require("lualine").setup({
   tabline = {},
   extensions = {},
 })
-
