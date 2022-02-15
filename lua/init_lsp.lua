@@ -96,7 +96,7 @@ local saga = require("lspsaga")
 saga.init_lsp_saga({
   code_action_icon = "»",
   definition_preview_icon = "¢",
-  dianostic_header_icon = " µ",
+  diagnostic_header_icon = " µ",
   error_sign = "é",
   finder_definition_icon = "Þ",
   finder_reference_icon = "ç",

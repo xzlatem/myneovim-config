@@ -28,7 +28,7 @@ Plug 'mhartington/formatter.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 "Plug 'kabouzeid/nvim-lspinstall'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'tami5/lspsaga.nvim'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim',
@@ -42,11 +42,17 @@ Plug 'dpelle/vim-LanguageTool'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'hoob3rt/lualine.nvim'
 
-" jupyter notebook
-Plug 'szymonmaszke/vimpyter'
-
 " narrow region
 Plug 'chrisbra/NrrwRgn'
+
+" jinja
+Plug 'lepture/vim-jinja'
+
+" nim
+Plug 'alaviss/nim.nvim'
+
+" dart
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 " ==================== SETUP GLOBAL VARIABLES ====================
@@ -100,6 +106,7 @@ set signcolumn=yes
 au FileType wiki setl sw=2
 au FileType html,css,php,blade,vue,jsx,svelte,gohtmltmpl EmmetInstall
 au FileType html,css,ts,vue,jsx,tmpl setl sw=2
+au FileType dart setl sw=2
 au CompleteDone * pclose
 au TermOpen * setlocal nonumber norelativenumber
 au Filetype txt,md,markdown let b:AutoPairs = {'(':')','{':'}',"'":"'",'"':'"', '```':'```', '`':'`'}
@@ -118,6 +125,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 " --- vim terminal motions ---
 nnoremap tt :new<CR>:term<CR> :resize 7<CR>A
+nnoremap et :new<CR>:term<CR> :resize 26<CR>A
 nnoremap vv :vnew<CR>:term<CR>A
 nnoremap <leader>ff :tabnew<CR>:term<CR>A
 tnoremap <esc><esc> <C-\><C-n>
@@ -197,16 +205,19 @@ function! InsertTime()
     exe "normal! a[ " . curdate ." ]"
 endfunction
 
+function! InsertISOTime()
+    let curdate = strftime('%Y-%m-%dT%T.%Y%m')
+    exe "normal! a" . curdate .""
+endfunction
+
 nnoremap <leader>id :call InsertDate()<CR>
 nnoremap <leader>in :call InsertTomorrowDate()<CR>
 nnoremap <leader>it :call InsertTime()<CR>
+nnoremap <leader>ir :call InsertISOTime()<CR>
 vnoremap <leader>vi :call VueTransTempl()<CR>
 vnoremap <leader>vk :call VueTransText()<CR>
 vnoremap <leader>vl :call VueTransUnquote()<CR>
 
 nnoremap <leader>fp :!prettier % --print-width=100 --tab-width=4 --write<CR>
 
-" ======================= Jupyter Notebook ============================
-autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
+au BufNewFile,BufRead *.jj,*.tpl set ft=jinja
