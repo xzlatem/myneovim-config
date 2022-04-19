@@ -53,6 +53,12 @@ Plug 'alaviss/nim.nvim'
 
 " dart
 Plug 'dart-lang/dart-vim-plugin'
+
+"edgedb
+Plug 'edgedb/edgedb-vim'
+
+" csv
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 " ==================== SETUP GLOBAL VARIABLES ====================
@@ -125,7 +131,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 " --- vim terminal motions ---
 nnoremap tt :new<CR>:term<CR> :resize 7<CR>A
-nnoremap et :new<CR>:term<CR> :resize 26<CR>A
+nnoremap et :new<CR>:term<CR>A
 nnoremap vv :vnew<CR>:term<CR>A
 nnoremap <leader>ff :tabnew<CR>:term<CR>A
 tnoremap <esc><esc> <C-\><C-n>
