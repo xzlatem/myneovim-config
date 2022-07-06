@@ -59,6 +59,12 @@ Plug 'edgedb/edgedb-vim'
 
 " csv
 Plug 'chrisbra/csv.vim'
+Plug 'tpope/vim-surround'
+
+" vale
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'folke/trouble.nvim'
+
 call plug#end()
 
 " ==================== SETUP GLOBAL VARIABLES ====================
@@ -112,9 +118,11 @@ set signcolumn=yes
 au FileType wiki setl sw=2
 au FileType html,css,php,blade,vue,jsx,svelte,gohtmltmpl EmmetInstall
 au FileType html,css,ts,vue,jsx,tmpl setl sw=2
+au FileType cpp,h,cxx,c setl sw=2
 au FileType dart setl sw=2
 au CompleteDone * pclose
 au TermOpen * setlocal nonumber norelativenumber
+"au Filetype txt,md,markdown setlocal tw=80
 au Filetype txt,md,markdown let b:AutoPairs = {'(':')','{':'}',"'":"'",'"':'"', '```':'```', '`':'`'}
 au Filetype txt,md,markdown setlocal linebreak
 au Filetype txt,md,markdown setlocal wrap 
@@ -173,6 +181,7 @@ lua require('init_lsp')
 lua require('init_statusline')
 lua require('init_prettier')
 lua require('init_telescope')
+lua require('init_vale')
 
 " ==================== CUSTOM FUNCTIONS ====================
 function! VueTransTempl()
@@ -216,7 +225,21 @@ function! InsertISOTime()
     exe "normal! a" . curdate .""
 endfunction
 
+function! InsertDateOnly()
+    let curdate = strftime('%Y-%m-%d')
+    exe "normal! a" . curdate .""
+endfunction
+
+function! FormatSQL()
+    exe "normal! :%s/,/,\r\t/gi"
+    exe "normal! :%s/WHERE/\rWHERE\r\t/gi"
+    exe "normal! :%s/INNER JOIN/\rINNER JOIN\r\t/gi"
+    exe "normal! :%s/LEFT JOIN/\rLEFT JOIN\r\t/gi"
+    exe "normal! :%s/FROM/\rFROM\r\t/gi"
+endfunction
+
 nnoremap <leader>id :call InsertDate()<CR>
+nnoremap <leader>ie :call InsertDateOnly()<CR>
 nnoremap <leader>in :call InsertTomorrowDate()<CR>
 nnoremap <leader>it :call InsertTime()<CR>
 nnoremap <leader>ir :call InsertISOTime()<CR>
@@ -227,3 +250,11 @@ vnoremap <leader>vl :call VueTransUnquote()<CR>
 nnoremap <leader>fp :!prettier % --print-width=100 --tab-width=4 --write<CR>
 
 au BufNewFile,BufRead *.jj,*.tpl set ft=jinja
+
+" Vim Script
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>

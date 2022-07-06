@@ -70,8 +70,7 @@ require("telescope").setup({
 vim.api.nvim_exec(
   [[
 nmap <C-p> :lua require("telescope.builtin").find_files(require("telescope.themes").get_ivy({}))<cr>
-nmap <C-o> :lua require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({}))<cr>
-nmap <C-a> :lua require("telescope.builtin").buffers(require("telescope.themes").get_ivy({}))<cr>
+nmap <C-s> :lua require("telescope.builtin").buffers(require("telescope.themes").get_ivy({}))<cr>
 
 nmap <leader>tk :lua require("telescope.builtin").colorscheme(require("telescope.themes").get_ivy({}))<cr>
 nmap <leader>tt :lua require("telescope.builtin").tags(require("telescope.themes").get_ivy({}))<cr>
@@ -89,3 +88,5 @@ nmap <leader>la :lua require("telescope.builtin").lsp_code_actions(require("tele
 ]],
   true
 )
+
+--nmap <C-o> :lua require("telescope.builtin").file_browser(require("telescope.themes").get_ivy({}))<cr>
