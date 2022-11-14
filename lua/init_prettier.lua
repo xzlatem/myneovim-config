@@ -18,6 +18,7 @@ require("formatter").setup({
     markdown = { prettier },
     svelte = { prettier },
     vue = { prettier },
+    twig = { prettier },
     cpp = {
       function()
         return {

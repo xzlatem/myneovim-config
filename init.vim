@@ -49,21 +49,21 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'lepture/vim-jinja'
 
 " nim
-Plug 'alaviss/nim.nvim'
+"Plug 'alaviss/nim.nvim'
 
 " dart
-Plug 'dart-lang/dart-vim-plugin'
+"Plug 'dart-lang/dart-vim-plugin'
 
 "edgedb
-Plug 'edgedb/edgedb-vim'
+"Plug 'edgedb/edgedb-vim'
 
 " csv
 Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-surround'
 
 " vale
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'folke/trouble.nvim'
+"Plug 'jose-elias-alvarez/null-ls.nvim'
+"Plug 'folke/trouble.nvim'
 
 call plug#end()
 
@@ -116,8 +116,8 @@ set signcolumn=yes
 " ==================== SETUP AUTOFILE ====================
 
 au FileType wiki setl sw=2
-au FileType html,css,php,blade,vue,jsx,svelte,gohtmltmpl EmmetInstall
-au FileType html,css,ts,vue,jsx,tmpl setl sw=2
+au FileType html,css,php,blade,vue,jsx,svelte,gohtmltmpl,twig EmmetInstall
+au FileType html,css,ts,vue,jsx,tmpl,javascript setl sw=2
 au FileType cpp,h,cxx,c setl sw=2
 au FileType dart setl sw=2
 au CompleteDone * pclose
@@ -181,7 +181,7 @@ lua require('init_lsp')
 lua require('init_statusline')
 lua require('init_prettier')
 lua require('init_telescope')
-lua require('init_vale')
+"lua require('init_vale')
 
 " ==================== CUSTOM FUNCTIONS ====================
 function! VueTransTempl()
